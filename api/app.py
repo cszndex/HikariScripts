@@ -58,7 +58,7 @@ def home():
     form = request.form.get("fluxus_url")
     extracted = tool_extract_hwid(form)
     if extracted:
-      resp = make_response(render_template('home.html'))
+      resp = make_response(render_template('redirect.html'))
       resp.set_cookie("fhwid", extracted)
       return resp 
   if referer == "https://linkvertise.com/" and fhwid:
