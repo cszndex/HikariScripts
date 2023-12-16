@@ -69,3 +69,10 @@ def home():
     return render_template("home.html", generatedKey=generatedKey, expirationStr=expirationStr)
   
   return render_template('home.html', generatedKey=generatedKey)
+
+@app.route('/tos')
+def tos():
+  filePath = "api/hikari"
+  file = open(filePath, 'r')
+  fileRead = file.read()
+  return render_template("tos.html", fileRead=fileRead)
