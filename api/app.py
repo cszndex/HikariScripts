@@ -72,7 +72,4 @@ def home():
 
 @app.route('/tos')
 def tos():
-  filePath = "api/hikari"
-  file = open(filePath, 'r')
-  fileRead = file.read()
-  return render_template("tos.html", fileRead=fileRead)
+  return render_template("tos.html")
