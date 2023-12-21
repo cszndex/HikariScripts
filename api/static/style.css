@@ -405,7 +405,7 @@ html {
 }
 
 #container__textarea {
-    background: transparent;
+    background: var(--Primary) !important;
     position: relative;
     -webkit-text-fill-color: transparent;
     border: none;
@@ -416,7 +416,20 @@ html {
     box-shadow: none;
     resize: none;
     
-    width: 150px;
+    height: 150px;
+}
+
+#container__textarea:hover,
+#container__textarea:active,
+#container__textarea:focus {
+    color: var(--Primary);
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
 }
 
 #container__mirror {
