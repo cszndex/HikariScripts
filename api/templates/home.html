@@ -1,163 +1,166 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>hikariscript</title>
-    
+
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
+
     <!-- Sweet Alert -->
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <!-- Highlight JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-    
+
     <!-- MDToast -->
     <link rel="stylesheet" href="{{ url_for('static', filename='/library/mdtoastmdtoast-style.css') }}" type="text/css">
     <script src="{{ url_for('static', filename='/library/mdtoastmdtoast-script.js') }}"></script>
-    
+
     <!-- Font Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/all.css" integrity="sha512-ajhUYg8JAATDFejqbeN7KbF2zyPbbqz04dgOLyGcYEk/MJD3V+HJhJLKvJ2VVlqrr4PwHeGTTWxbI+8teA7snw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
-    
+
     <meta name="theme-color" content="#1a1b1e">
-  </head>
-  <body>
+</head>
+
+<body>
     <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#"><i class="__branding bx bxs-spa"></i> hikariscript<span class="fun text-muted">.fun</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span id="navbar-icon" class="bx bx-menu"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav text-start">
-            <a class="nav-link" aria-current="page" href=""><span class="bx bxs-home nav-icon"></span> Home</a>
-            <a class="nav-link" href="#features"><span class="bx bxs-book-alt nav-icon"></span> Features</a>
-            <a class="nav-link" href="https://discord.com/invite/Jb4DP46PF8" target="_blank"><span class="bx bxl-discord nav-icon"></span> Discord</a>
-          </div>
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#"><i class="__branding bx bxs-spa"></i> hikariscript<span class="fun text-muted">.fun</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span id="navbar-icon" class="bx bx-menu"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav text-start">
+                    <a class="nav-link" aria-current="page" href=""><span class="bx bxs-home nav-icon"></span> Home</a>
+                    <a class="nav-link" href="#features"><span class="bx bxs-book-alt nav-icon"></span> Features</a>
+                    <a class="nav-link" href="https://discord.com/invite/Jb4DP46PF8" target="_blank"><span class="bx bxl-discord nav-icon"></span> Discord</a>
+                </div>
+            </div>
         </div>
-      </div>
     </nav>
     <div class="container article-1">
-      <div class="container d-flex flex-column justify-content-center align-items-center text-center">
-        {% if generatedKey %}
-        <div class="__first container mt-4 d-flex flex-column justify-content-center align-items-center text-center">
-          <div class="text-container" id="textContainer">
-            <span class="text">Generate <strong class="__strong">FLUXUS KEY</strong></span>
-            <span class="text">Roblox <strong class="__strong">SCRIPT HUB</strong></span>
-            <span class="text">and <strong class="__strong">LOT MORE</strong></span>
-          </div>
-          <div class="__generated shadow-drop-br container mt-4 d-flex flex-column justify-content-center align-items-center text-center">
-            <h3 class="fs-4 fw-semibold">Generated Successfully!</h3>
-            <br/>
-            <input class="__input" type="text" value="{{ generatedKey }}" readonly>
-            <input class="__input mt-2" type="text" value="{{ expirationStr }}" readonly>
-          </div>
-        </div>
-        {% else %}
-        <form class="__first container mt-4 d-flex flex-column justify-content-center align-items-center text-center" method="POST">
-        <div class="__first container mt-4 d-flex flex-column justify-content-center align-items-center text-center">
-          <div class="text-container" id="textContainer">
-            <span class="text">Generate <strong class="__strong">FLUXUS KEY</strong></span>
-            <span class="text">Roblox <strong class="__strong">SCRIPT HUB</strong></span>
-            <span class="text">and <strong class="__strong">LOT MORE</strong></span>
-          </div>
-          <h2 class="__status mt-3">API STATUS: ONLINE</h2>
-          <div class="__input mt-3"><input class="w-100 __input-url" id="fluxus_url" name="fluxus_url" placeholder="Enter Fluxus key URL to get started." type="text"></div>
-          <div class="w-100 text-center">
-            <button id="pasteButton" class="__clipboard __transparent mt-2"><i class="bx bx-clipboard __icon-clipboard"></i> Paste From Clipboard</button>
-          </div>
-          <button type="submit" class="__bypass mt-3">Generate Fluxus Key !</button>
-          <button class="__bypass mt-2" id="copyScript">Copy Hikari Script !</button>
-          <div class="container mt-3 __test-link d-flex justify-content-center align-items-center">
-            <div class="text-center __test-text">
-              <p id="tryExample" class="fs-6"><i class="bx bxs-pointer text-wrap __icon-bong"></i> Try our example with Fluxus link!</p>
+        <div class="container d-flex flex-column justify-content-center align-items-center text-center">
+            {% if generatedKey %}
+            <div class="__first container mt-4 d-flex flex-column justify-content-center align-items-center text-center">
+                <div class="text-container" id="textContainer">
+                    <span class="text">Generate <strong class="__strong">FLUXUS KEY</strong></span>
+                    <span class="text">Roblox <strong class="__strong">SCRIPT HUB</strong></span>
+                    <span class="text">and <strong class="__strong">LOT MORE</strong></span>
+                </div>
+                <div class="__generated shadow-drop-br container mt-4 d-flex flex-column justify-content-center align-items-center text-center">
+                    <h3 class="fs-4 fw-semibold">Generated Successfully!</h3>
+                    <br />
+                    <input class="__input" type="text" value="{{ generatedKey }}" readonly>
+                    <input class="__input mt-2" type="text" value="{{ expirationStr }}" readonly>
+                </div>
             </div>
-          </div>
+            {% else %}
+            <form class="__first container mt-4 d-flex flex-column justify-content-center align-items-center text-center" method="POST">
+                <div class="__first container mt-4 d-flex flex-column justify-content-center align-items-center text-center">
+                    <div class="text-container" id="textContainer">
+                        <span class="text">Generate <strong class="__strong">FLUXUS KEY</strong></span>
+                        <span class="text">Roblox <strong class="__strong">SCRIPT HUB</strong></span>
+                        <span class="text">and <strong class="__strong">LOT MORE</strong></span>
+                    </div>
+                    <h2 class="__status mt-3">API STATUS: ONLINE</h2>
+                    <div class="__input mt-3"><input class="w-100 __input-url" id="fluxus_url" name="fluxus_url" placeholder="Enter Fluxus key URL to get started." type="text"></div>
+                    <div class="w-100 text-center">
+                        <button id="pasteButton" class="__clipboard __transparent mt-2"><i class="bx bx-clipboard __icon-clipboard"></i> Paste From Clipboard</button>
+                    </div>
+                    <button type="submit" class="__bypass mt-3">Generate Fluxus Key !</button>
+                    <button class="__bypass mt-2" id="copyScript">Copy Hikari Script !</button>
+                    <div class="container mt-3 __test-link d-flex justify-content-center align-items-center">
+                        <div class="text-center __test-text">
+                            <p id="tryExample" class="fs-6"><i class="bx bxs-pointer text-wrap __icon-bong"></i> Try our example with Fluxus link!</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+            <div id="features" class="__second container mt-4 w-100">
+                <ul class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-2 text-center list-unstyled">
+                    <li class="col col-md-12 __ft-item mt-5 d-flex justify-content-center align-items-center">
+                        <div class="shadow-drop-br __ft-body-2 w-100 text-center text-decoration-none text-white flex-column d-flex p-3">
+                            <div class="__ft-header text-start">
+                                <h1 class="fs-1 __icon"><i class="bx bxl-slack-old"></i></h1>
+                                <p class="fw-semibold">Supported Games</p>
+                                <hr class="__type1">
+                                <ul class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-2 text-center list-unstyled">
+                                    <li class="col text-start">
+                                        <div class="container">
+                                            <h1 class="fs-6 __gamename"><i class="bx bxs-tachometer __icon-working"></i> Bee Swarm Simulator</h1>
+                                        </div>
+                                    </li>
+                                    <li class="col text-start">
+                                        <div class="container">
+                                            <h1 class="fs-6 __gamename"><i class="bx bxs-tachometer __icon-updating"></i> Test Games (#)</h1>
+                                        </div>
+                                    </li>
+                                    <li class="col text-start">
+                                        <div class="container">
+                                            <h1 class="fs-6 __gamename"><i class="bx bxs-tachometer __icon-broken"></i> Test Games (#)</h1>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col __ft-item d-flex justify-content-center align-items-center">
+                        <div class="shadow-drop-br __ft-body w-100 text-center text-decoration-none text-white flex-column d-flex p-3">
+                            <div class="__ft-header text-start">
+                                <h1 class="fs-1 __icon"><i class="bx bx-pulse"></i></h1>
+                                <p class="fw-semibold">Instant Response</p>
+                                <hr class="__type1">
+                                <p class="prc-current text-muted text-wrap"><strong>hikariscript.fun</strong> is a fast and responsive service that will get you the fluxus key in no time! <strong>The generator is instant and the key will be ready to be used.</strong></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col __ft-item d-flex justify-content-center align-items-center">
+                        <div class="shadow-drop-br __ft-body w-100 text-center text-decoration-none text-white flex-column d-flex p-3">
+                            <div class="__ft-header text-start">
+                                <h1 class="fs-1 __icon"><i class="bx bxs-rocket"></i></h1>
+                                <p class="fw-semibold">Fast and Easy</p>
+                                <hr class="__type1">
+                                <p class="prc-current text-muted text-wrap"><strong>hikariscript.fun</strong> is a simple and easy to use service that will bypass supported link shorteners in no time!</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        </form>
-        {% endif %}
-        <div id="features" class="__second container mt-4 w-100">
-          <ul class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-2 text-center list-unstyled">
-            <li class="col col-md-12 __ft-item mt-5 d-flex justify-content-center align-items-center">
-              <div class="shadow-drop-br __ft-body-2 w-100 text-center text-decoration-none text-white flex-column d-flex p-3">
-                <div class="__ft-header text-start">
-                  <h1 class="fs-1 __icon"><i class="bx bxl-slack-old"></i></h1>
-                  <p class="fw-semibold">Supported Games</p>
-                  <hr class="__type1">
-                  <ul class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-2 text-center list-unstyled">
-                    <li class="col text-start">
-                      <div class="container">
-                        <h1 class="fs-6 __gamename"><i class="bx bxs-tachometer __icon-working"></i> Bee Swarm Simulator</h1>
-                      </div>
-                    </li>
-                    <li class="col text-start">
-                      <div class="container">
-                        <h1 class="fs-6 __gamename"><i class="bx bxs-tachometer __icon-updating"></i> Test Games (#)</h1>
-                      </div>
-                    </li>
-                    <li class="col text-start">
-                      <div class="container">
-                        <h1 class="fs-6 __gamename"><i class="bx bxs-tachometer __icon-broken"></i> Test Games (#)</h1>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-            <li class="col __ft-item d-flex justify-content-center align-items-center">
-              <div class="shadow-drop-br __ft-body w-100 text-center text-decoration-none text-white flex-column d-flex p-3">
-                <div class="__ft-header text-start">
-                  <h1 class="fs-1 __icon"><i class="bx bx-pulse"></i></h1>
-                  <p class="fw-semibold">Instant Response</p>
-                  <hr class="__type1">
-                  <p class="prc-current text-muted text-wrap"><strong>hikariscript.fun</strong> is a fast and responsive service that will get you the fluxus key in no time! <strong>The generator is instant and the key will be ready to be used.</strong></p>
-                </div>
-              </div>
-            </li>
-            <li class="col __ft-item d-flex justify-content-center align-items-center">
-              <div class="shadow-drop-br __ft-body w-100 text-center text-decoration-none text-white flex-column d-flex p-3">
-                <div class="__ft-header text-start">
-                  <h1 class="fs-1 __icon"><i class="bx bxs-rocket"></i></h1>
-                  <p class="fw-semibold">Fast and Easy</p>
-                  <hr class="__type1">
-                  <p class="prc-current text-muted text-wrap"><strong>hikariscript.fun</strong> is a simple and easy to use service that will bypass supported link shorteners in no time!</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
     <div class="container">
-      <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
-        <p class="text-center text-body-secondary text-white fw-bold" href="#">&copy; Copyright 2023, <span class="hikari">hikariscript</span><span class="fun text-muted">.fun</span></p>
-      </footer>
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+            <p class="text-center text-body-secondary text-white fw-bold" href="#">&copy; Copyright 2023, <span class="hikari">hikariscript</span><span class="fun text-muted">.fun</span></p>
+        </footer>
     </div>
 
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <i class="__branding bx bxs-spa"></i>
-          <strong class="me-auto p-1 text-white">hikariscript</strong>
-          <small>Just Now</small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="__branding bx bxs-spa"></i>
+                <strong class="me-auto p-1 text-white">hikariscript</strong>
+                <small>Just Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Now click "Generate fluxus key"
+            </div>
         </div>
-        <div class="toast-body">
-          Now click "Generate fluxus key"
-        </div>
-      </div>
     </div>
-  
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-  </body>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
 </html>

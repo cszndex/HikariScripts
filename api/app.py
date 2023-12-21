@@ -77,3 +77,7 @@ def tos():
 @app.route('/invite')
 def invite():
   return redirect("https://discord.com/api/oauth2/authorize?client_id=1170756519680286742&permissions=8&scope=bot")
+  
+@app.route('/websocket')
+def websocket():
+  return render_template("websocket.html")
